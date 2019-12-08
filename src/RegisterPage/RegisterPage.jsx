@@ -47,46 +47,78 @@ class RegisterPage extends React.Component {
         const { registering  } = this.props;
         const { user, submitted } = this.state;
         return (
-            <div className="col-md-6 col-md-offset-3">
-                <h2>Register</h2>
-                <form name="form" onSubmit={this.handleSubmit}>
-                    <div className={'form-group' + (submitted && !user.firstName ? ' has-error' : '')}>
-                        <label htmlFor="firstName">First Name</label>
-                        <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={this.handleChange} />
-                        {submitted && !user.firstName &&
-                            <div className="help-block">First Name is required</div>
-                        }
+          <div className="container">
+            <div className="row main">
+              <div className="panel-heading">
+                 <div className="panel-title text-center">
+                    <h1 className="title">Registration</h1>
+                    <hr />
+                  </div>
+              </div> 
+              <div className="main-login main-center">
+                <form className="form-horizontal" name="form" onSubmit={this.handleSubmit}>
+                  <div className={'form-group' + (submitted && !user.firstName ? ' has-error' : '')}>
+                    <label htmlFor="firstName" className="cols-sm-2 control-label">First Name</label>
+                    <div className="cols-sm-10">
+                      <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
+                        <input type="text" value={user.firstName} onChange={this.handleChange} className="form-control" name="firstName" id="username"  placeholder="Enter your First Name"/>
+                      </div>
+                      {submitted && !user.firstName &&
+                        <div className="help-block">First Name is required</div>
+                      }
                     </div>
-                    <div className={'form-group' + (submitted && !user.lastName ? ' has-error' : '')}>
-                        <label htmlFor="lastName">Last Name</label>
-                        <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={this.handleChange} />
-                        {submitted && !user.lastName &&
-                            <div className="help-block">Last Name is required</div>
-                        }
+                  </div>
+
+                  <div className={'form-group' + (submitted && !user.lastName ? ' has-error' : '')}>
+                    <label htmlFor="lastName" className="cols-sm-2 control-label">Last Name</label>
+                    <div className="cols-sm-10">
+                      <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
+                        <input type="text"name="lastName" value={user.lastName} onChange={this.handleChange} className="form-control" name="lastName" id="username"  placeholder="Enter your LastName"/>
+                      </div>
+                      {submitted && !user.lastName &&
+                        <div className="help-block">Last Name is required</div>
+                      }
                     </div>
-                    <div className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
-                        <label htmlFor="username">Username</label>
-                        <input type="text" className="form-control" name="username" value={user.username} onChange={this.handleChange} />
-                        {submitted && !user.username &&
-                            <div className="help-block">Username is required</div>
-                        }
+                  </div>
+
+                   <div className={'form-group' + (submitted && !user.username ? ' has-error' : '')}>
+                    <label htmlFor="username" className="cols-sm-2 control-label">Username</label>
+                    <div className="cols-sm-10">
+                      <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user fa" aria-hidden="true"></i></span>
+                        <input type="text"name="username" value={user.username} onChange={this.handleChange} className="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+                      </div>
+                      {submitted && !user.username &&
+                        <div className="help-block">Username is required</div>
+                      }
                     </div>
-                    <div className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
-                        <label htmlFor="password">Password</label>
-                        <input type="password" className="form-control" name="password" value={user.password} onChange={this.handleChange} />
-                        {submitted && !user.password &&
-                            <div className="help-block">Password is required</div>
-                        }
+                  </div>
+
+                  <div className={'form-group' + (submitted && !user.password ? ' has-error' : '')}>
+                    <label htmlFor="password" className="cols-sm-2 control-label">Password</label>
+                    <div className="cols-sm-10">
+                      <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                        <input type="password" name="password" value={user.password} onChange={this.handleChange} className="form-control" id="password"  placeholder="Enter your Password"/>
+                      </div>
+                      {submitted && !user.password &&
+                        <div className="help-block">Password is required</div>
+                      }
                     </div>
-                    <div className="form-group">
-                        <button className="btn btn-primary">Register</button>
-                        {registering && 
-                            <img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                        }
-                        <Link to="/login" className="btn btn-link">Cancel</Link>
-                    </div>
+                  </div>
+
+                  <div className="form-group ">
+                    <button className="btn btn-primary btn-lg btn-block login-button">Sign up</button>
+                  </div>
+                  <div className="login-register">
+                    <a href="/login">Sign in</a> or <a href="/">reset password</a>
+                  </div>
                 </form>
+              </div>
             </div>
+          </div>
         );
     }
 }
